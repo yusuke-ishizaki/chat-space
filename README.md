@@ -36,7 +36,6 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, default: ""|
-|message_id|integer|null: false, foreign_key: true|
 |email|string|null: false, default: ""|
 |password|string|null: false, default: ""|
 ### Association
@@ -48,7 +47,6 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
-|message_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :users, through: :members
 - belongs_to :message
@@ -63,4 +61,5 @@ Things you may want to cover:
 |group_id|integer|null: false, foreign_key: true|
 ### Association
 - has_many :groups
-- has_many :users
+- has_many :user
+
