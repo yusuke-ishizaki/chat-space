@@ -15,7 +15,6 @@
 |password|string|null: false|
 ### Association
 - has_many :messages
-- has_many :groups
 - has_many :groups, through: :members
 
 ## groupsテーブル
@@ -25,7 +24,6 @@
 ### Association
 - has_many :users, through: :members
 - has_many :messages
-- has_many :users
 
 ## messagesテーブル
 |Column|Type|Options|
