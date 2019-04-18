@@ -1,0 +1,43 @@
+.wrapper
+    .chat-side
+        .side-header
+            %p.side-header__user-name jiro
+            %ul.user-menu
+                %li.user-menu__edit-user
+                = link_to '/' do
+                    %i.fa.fa-edit
+                %li.user-menu__new-group
+                = link_to '/' do
+                    %i.fa.fa-cog
+
+        .groups
+            = link_to "/" do
+                .group
+                    %p.group__group-name team_a
+                    %p.group__latest-message message
+    .chat-main
+        .main-header
+            .current-group{"data-group_id": "502"}
+                %h2.current-group__name team_a
+                %ul.member-list
+                    Member：
+                    %li.member-list__member jiro
+            = link_to "/" do
+                .main-header__edit-btn Edit
+                    
+        .messages
+            .message
+                .upper-info
+                    %p.upper-info__user jiro
+                    %p.upper-info__date 2019/04/14(Sun) 14:41:42
+                %p.message__text message
+
+        .form
+            %form#new_message.new-message{"accept-charset": "UTF-8", action: "/", enctype: "multipart/form-data", method: "post"}
+                .input-box
+                    %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
+                    %label.image-label{for: "message_image"}
+                        %i.fa.fa-image
+                        %input{name: "utf8", type: "hidden", value: ""}/
+                        %input{name: "authenticity_token", type: "hidden", value: ""}/
+                %input.new-message__submit-btn{name: "Send", name: "commit", type: "submit", value: "Send"}/
