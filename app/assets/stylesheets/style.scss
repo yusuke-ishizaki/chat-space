@@ -1,0 +1,196 @@
+*{
+  box-sizing: border-box;
+}
+
+.flash-box{
+  color: white;
+  font-size: 1rem;
+  font-weight: lighter;
+  text-align: center;
+  width: 100vw;
+  .notice{
+    background-color: $light_blue;
+  }    
+}
+
+.wrapper{
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
+.user-menu__edit-user, .user-menu__new-group, .member-list__member{
+  text-decoration: none!important;
+}
+
+
+
+.side__block{
+  width: 300px;
+  float: left;
+
+  .side-header{
+      background-color: #253141;
+      height: 100px;
+      display: flex;
+      align-items: center; 
+      padding: 0 20px;
+      justify-content: space-between;
+      color: #ffffff;
+      font-weight:bold;
+  }  
+      &__user-name{
+        height: 16px;
+        display: inline-block;
+        font-size: 16px;
+        float:right;
+      }  
+  .user-menu{
+    display: flex;
+    padding: 35px 2px 35px ;
+  }  
+  .fa-edit{
+    content: "\f044"; 
+    color: white;
+  }  
+  .fa-cog{
+    content:"\f013";
+    color: white;
+  }
+
+  .side__bottom{
+    background-color: #2f3e51;
+    height: calc(100vh - 100px);
+    overflow: scroll;
+    box-sizing: border-box;
+    padding: 20px 20px ;
+    color: $white;  
+    &__group-name{
+      font-size: 15px;
+      margin-bottom: 5px;
+      text-align: left;
+    }  
+    &__latest-message{
+      font-size: 11px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+  }
+}
+
+.main__block{
+  width: calc(100vw - 300px);
+  float: left;
+}
+  .main-header{
+    height: 100px;
+    border-bottom: solid 1px #eee;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+  }  
+  .current-group__name{
+    font-size: 20px;
+    color: #333;
+    margin-top: 35px;
+  }  
+  .member-list{
+    display: flex;
+    margin-top: 15px;
+    font-size: 12px;
+    color: $gray;
+  }  
+  .member-list__member{
+    height: 12px;
+    color: $gray;
+    font-size: 12px;
+  }
+
+  .main-header__edit-btn{
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+    margin-top: 30px;
+    border: solid 1px $light_blue;
+    color: $light_blue;
+  }
+
+  .main__bottom{
+    height: calc(100vh - 190px);
+    padding: 46px 40px;
+    background: #fafafa;
+    overflow: scroll;  
+    .message__text{
+      font-size: 14px;
+      color: black;
+      text-align: left;
+    }
+  }
+
+  .upper-info {
+    display: flex;
+    margin-bottom: 10px;  
+    &__user{
+      font-size: 16px;
+      font-weight: bold;
+      color: black;
+    }  
+    &__date{
+      font-size: 12px;
+      margin-left: 10px;
+      color: #999999;
+    }
+  }
+
+
+
+  .form{
+    background-color: #ddd;
+    padding: 20px 40px;
+    height: 90px;  
+  }
+
+  .new-message{
+    height: 90px;
+    display: flex;  
+    &__submit-btn{
+      width: 100px;
+      height: 50px;
+      padding: 0 30px;
+      margin-left: 15px;
+      background-color: $light_blue;
+      color: #fff;
+    }
+  }
+
+  .input-box{
+    position: relative;
+    width: 100%;
+
+    &__text{
+      height: 50px;
+      width: 100%;
+      padding: 0 40px 0 10px;
+      color: #434a54;
+      border-style: none;
+    }
+  }
+
+  .image-label{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  .fa-image{
+    color: black;
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+
+a {
+    text-decoration: none;
+}
