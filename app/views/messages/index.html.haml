@@ -1,5 +1,5 @@
 .wrapper
-    .chat-side
+    .side__block
         .side-header
             %p.side-header__user-name jiro
             %ul.user-menu
@@ -10,12 +10,12 @@
                 = link_to '/' do
                     %i.fa.fa-cog
 
-        .groups
+        .side__bottoms
             = link_to "/" do
-                .group
-                    %p.group__group-name team_a
-                    %p.group__latest-message message
-    .chat-main
+                .side__bottom
+                    %p.side__bottom__group-name team_a
+                    %p.side__bottom__latest-message message
+    .main__block
         .main-header
             .current-group{"data-group_id": "502"}
                 %h2.current-group__name team_a
@@ -25,8 +25,8 @@
             = link_to "/" do
                 .main-header__edit-btn Edit
                     
-        .messages
-            .message
+        .main__bottoms
+            .main__bottom
                 .upper-info
                     %p.upper-info__user jiro
                     %p.upper-info__date 2019/04/14(Sun) 14:41:42
