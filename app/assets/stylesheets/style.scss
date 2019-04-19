@@ -64,17 +64,18 @@
     height: calc(100vh - 100px);
     overflow: scroll;
     box-sizing: border-box;
-    padding: 20px 20px ;
-    color: $white;  
+    padding: 20px 20px ; 
     &-group__name{
       font-size: 15px;
       margin-bottom: 5px;
       text-align: left;
+      color: $white;  
     }  
     &-group__message{
       font-size: 11px;
       margin-bottom: 40px;
       text-align: left;
+      color: $white;  
     }
   }
 }

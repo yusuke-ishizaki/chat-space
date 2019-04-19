@@ -36,13 +36,14 @@
           = current_user.name
           %p.upper-info__date 2019/04/14(Sun) 14:41:42
         %p.message__text message
-
+  
     .form
-      = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-        .form__mask
-          = f.label :image, class: 'form__mask__image' do
-            = fa_icon 'picture-o', class: 'icon'
-            = f.file_field :image, class: 'hidden'
-        = f.submit 'Send', class: 'form__submit'
-    
+      %form#new_message.new-message{"accept-charset": "UTF-8", action: "/", enctype: "multipart/form-data", method: "post"}
+        .input-box
+          %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
+          %label.image-label{for: "message_image"}
+            %i.fa.fa-image
+            %input{name: "utf8", type: "hidden", value: ""}/
+            %input{name: "authenticity_token", type: "hidden", value: ""}/
+        %input.new-message__submit-btn{name: "Send", name: "commit", type: "submit", value: "Send"}/
+  
