@@ -12,10 +12,14 @@
             = fa_icon 'cog', class: 'icon'
 
     .side__bottoms
-      = link_to "/" do
+      - current_user.groups.each do |group|
         .side__bottom
-          %p.group__group-name team_a
-          %p.group__latest-message message
+          = link_to group_messages_path(group) do
+            .side__bottoms-group__name
+              = group.name
+            .side__bottoms-group__message
+              メッセージはまだありません。  
+  
   .main__block
     .main-header
       .current-group{"data-group_id": "502"}
@@ -29,7 +33,7 @@
     .main__bottoms
       .main__bottom
         .upper-info
-          %p.upper-info__user jiro
+          = current_user.name
           %p.upper-info__date 2019/04/14(Sun) 14:41:42
         %p.message__text message
 

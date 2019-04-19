@@ -59,19 +59,19 @@
     color: white;
   }
 
-  .side__bottom{
+  .side__bottoms{
     background-color: #2f3e51;
     height: calc(100vh - 100px);
     overflow: scroll;
     box-sizing: border-box;
     padding: 20px 20px ;
     color: $white;  
-    &__group-name{
+    &-group__name{
       font-size: 15px;
       margin-bottom: 5px;
       text-align: left;
     }  
-    &__latest-message{
+    &-group__message{
       font-size: 11px;
       margin-bottom: 40px;
       text-align: left;
