@@ -18,7 +18,7 @@
             .side__bottoms-group__name
               = group.name
             .side__bottoms-group__message
-              メッセージはまだありません。  
+              = group.show_last_message
   
   .main__block
     .main-header
@@ -38,7 +38,7 @@
         %p.message__text message
   
     .form
-      %form#new_message.new-message{"accept-charset": "UTF-8", action: "/", enctype: "multipart/form-data", method: "post"}
+      %form#new_message.new-message{"accept-charset": "UTF-8", action: "messages/new", enctype: "multipart/form-data", method: :post}
         .input-box
           %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
           %label.image-label{for: "message_image"}
@@ -46,4 +46,5 @@
             %input{name: "utf8", type: "hidden", value: ""}/
             %input{name: "authenticity_token", type: "hidden", value: ""}/
         %input.new-message__submit-btn{name: "Send", name: "commit", type: "submit", value: "Send"}/
+
   
