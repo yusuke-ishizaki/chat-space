@@ -29,14 +29,3 @@
           = f.file_field :image, class: 'hidden'
         = f.submit 'Send', class: 'form__submit'
     
-
-        -# .form
-        -#   %form#new_message.new-message{"accept-charset": "UTF-8", action: "messages/new", enctype: "multipart/form-data", method: :post}
-        -#     .input-box
-        -#       %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
-        -#       %label.image-label{for: "message_image"}
-        -#         %i.fa.fa-image
-        -#         %input{name: "utf8", type: "hidden", value: ""}/
-        -#         %input{name: "authenticity_token", type: "hidden", value: ""}/
-        -#     %input.new-message__submit-btn{name: "Send", name: "commit", type: "submit", value: "Send"}/
-    
