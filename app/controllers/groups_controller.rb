@@ -1,7 +1,8 @@
 class GroupsController < ApplicationController
   def index
     @group = Group.all
-    @message = Message.new
+    # @message = Message.new
+    # @messages = @group.messages.includes(:user)
   end
 
   def new
@@ -19,7 +20,7 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.new
+    @group = Group.new(group_params)
   end
 
   def update

@@ -146,51 +146,41 @@
 
 
 
-  .form{
-    background-color: #ddd;
-    padding: 20px 40px;
-    height: 90px;  
-  }
-
-  .new-message{
+  .form {
+    background-color: #DDDDDD;
+    box-sizing: border-box;
     height: 90px;
-    display: flex;  
-    &__submit-btn{
-      width: 100px;
+    padding: 20px 50px 20px 40px;
+    &__message {
+      border: none;
+      float: left;
       height: 50px;
-      padding: 0 30px;
-      margin-left: 15px;
+      width: calc(100% - 150px);
+    }
+    &__mask {
+      background-color: $white;
+      float: left;
+      height: 50px;
+      padding-right: 10px;
+      &__image {
+        font-size: 20px;
+        line-height: 50px;
+      }
+      .hidden {
+        display: none;
+      }
+    }
+    &__submit {
       background-color: $light_blue;
-      color: #fff;
-    }
-  }
-
-  .input-box{
-    position: relative;
-    width: 100%;
-
-    &__text{
+      border: none;
+      color: $white;
+      float: right;
+      font-size: 16px;
       height: 50px;
-      width: 100%;
-      padding: 0 40px 0 10px;
-      color: #434a54;
-      border-style: none;
+      margin-left: 15px;
+      padding: 0 30px;
     }
   }
-
-  .image-label{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-  }
-
-  .fa-image{
-    color: black;
-    font-size: 20px;
-    margin-top: 5px;
-  }
-
 
 a {
     text-decoration: none;
