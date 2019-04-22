@@ -13,12 +13,10 @@
             -@group.users.each do |user|
               .each-member
                 = user.name
-            = link_to edit_group_path(@group) do
-              .main-header__edit-btn Edit
+      = link_to "Edit", edit_group_path(@group.id), class: "main-header__edit-btn "
                     
-    .main__bottoms
-      .main__bottom
-        = render partial: 'message', collection: @messages
+    .main__bottom
+      = render partial: 'message', collection: @messages
         
     .form
       = form_for [@group, @message] do |f|

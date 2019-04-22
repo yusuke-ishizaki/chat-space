@@ -84,6 +84,10 @@
   width: calc(100vw - 300px);
   float: left;
 }
+
+  .message{
+    padding-top: 40px;
+  }
   .main-header{
     height: 100px;
     border-bottom: solid 1px #eee;
@@ -129,10 +133,10 @@
     }
   }
 
-  .upper-info {
+  .upper-message {
     display: flex;
     margin-bottom: 10px;  
-    &__user{
+    &__user-name{
       font-size: 16px;
       font-weight: bold;
       color: black;

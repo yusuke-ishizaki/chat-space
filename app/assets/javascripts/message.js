@@ -19,9 +19,12 @@ $(function () {
             </div>`;
         return html;
     }
-    
+    function scroll_view() {
+        $('.main__bottom') .animate({scrollTop: $('.main__bottom')[0].scrollHeight},'fasts')
+    }
 
-    $('.form__message').on('submit', function (e) {
+
+    $('#new_message').on('submit', function (e) {
         e.preventDefault();
         var formData = new FormData(this);
         var url = $(this).attr("action");
@@ -37,11 +40,12 @@ $(function () {
 
         .done(function (data) {
             var html = buildHTML(data);
-            $('.messages').append(html);
+            $('.main__bottom').append(html);
             scroll_view()
+            $(".form__submit").prop("disabled", false); 
         })
         .fail(function () {
             alert('error');
-        })
+        });
     })
 }) 
