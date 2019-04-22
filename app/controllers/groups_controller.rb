@@ -1,8 +1,6 @@
 class GroupsController < ApplicationController
   def index
     @group = Group.all
-    # @message = Message.new
-    # @messages = @group.messages.includes(:user)
   end
 
   def new
