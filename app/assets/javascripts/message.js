@@ -1,26 +1,23 @@
 $(function () {
     function buildHTML(message) {
-        var img ="";
-        if (message.image.url){
-        var img = `<img src = ${message.image.url} class: "lower-message_image">`
-        }
+        var img =(message.image.url)? img = `<img src = ${message.image.url} class: "lower-message_image">`:"";
 
         var html =
             `<div class="message">
-            <div class="upper-message">
-            <div class="upper-message__user-name">
-            ${ message.name}
-            </div>
-            <div class="upper-message__date">
-            ${ message.date}
-            </div>
-            </div>
-            <div class="lower-meesage">
-            <p class="lower-message__content">
-            ${ message.content}
-            </p>
-            ${img}
-            </div>
+              <div class="upper-message">
+                <div class="upper-message__user-name">
+                  ${ message.name}
+                </div>
+                <div class="upper-message__date">
+                  ${ message.date}
+                </div>
+              </div>
+              <div class="lower-meesage">
+                <p class="lower-message__content">
+                  ${ message.content}
+                </p>
+                  ${img}
+              </div>
             </div>`;
         return html;
     }
@@ -48,6 +45,8 @@ $(function () {
             $('.main__bottom').append(html);
             scroll_view()
             $(".form__submit").prop("disabled", false); 
+            $('#message_content').val("");
+            $('.form__textfield').val('');
         })
         .fail(function () {
             alert('error');
