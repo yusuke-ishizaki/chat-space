@@ -1,43 +1,29 @@
 .wrapper
   .side__block
-    .side-header
-      %p.side-header__user-name jiro
-      %ul.user-menu
-        %li.user-menu__edit-user
-        = link_to '/' do
-          %i.fa.fa-edit
-        %li.user-menu__new-group
-        = link_to '/' do
-          %i.fa.fa-cog
+    = render partial: "shared/side"
 
-    .side__bottoms
-      = link_to "/" do
-        .side__bottom
-          %p.group__group-name team_a
-          %p.group__latest-message message
   .main__block
     .main-header
       .current-group{"data-group_id": "502"}
-        %h2.current-group__name team_a
+        %h2.current-group__name 
+          = @group.name
         %ul.member-list
           Member：
-          %li.member-list__member jiro
-      = link_to "/" do
-        .main-header__edit-btn Edit
+          %li.member-list__member 
+            -@group.users.each do |user|
+              .each-member
+                = user.name
+      = link_to "Edit", edit_group_path(@group.id), class: "main-header__edit-btn "
                     
-    .main__bottoms
-      .main__bottom
-        .upper-info
-          %p.upper-info__user jiro
-          %p.upper-info__date 2019/04/14(Sun) 14:41:42
-        %p.message__text message
-
+    .main__bottom
+      = render partial: 'message', collection: @messages
+        
     .form
-      %form#new_message.new-message{"accept-charset": "UTF-8", action: "/", enctype: "multipart/form-data", method: "post"}
-        .input-box
-          %input#message_content.input-box__text{name: "message[content]", placeholder: "type a message", type: "text"}/
-          %label.image-label{for: "message_image"}
-            %i.fa.fa-image
-            %input{name: "utf8", type: "hidden", value: ""}/
-            %input{name: "authenticity_token", type: "hidden", value: ""}/
-        %input.new-message__submit-btn{name: "Send", name: "commit", type: "submit", value: "Send"}/
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'image', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
+    

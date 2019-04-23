@@ -1,0 +1,51 @@
+= form_for @group do |f|
+  - if @group.errors.any?
+    .box-form__errors
+      %h2= "#{@group.errors.full_messages.count}件のエラーが発生しました。"
+      %ul
+        - @group.errors.full_messages.each do |message|
+          %li= message
+  .box-form__field
+    .box-form__field--left
+      = f.label :name, class: 'box-form__label'
+    .box-form__field--right
+      = f.text_field :name, class: 'box_name box-form__input', placeholder: "グループ名を入力してください"
+  .box-form__field.clearfix
+    / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
+    /
+      <div class='chat-group-form__field--left'>
+      <label class="chat-group-form__label" for="chat_group_チャットメンバーを追加">チャットメンバーを追加</label>
+      </div>
+      <div class='chat-group-form__field--right'>
+      <div class='chat-group-form__search clearfix'>
+      <input class='chat-group-form__input' id='user-search-field' placeholder='追加したいユーザー名を入力してください' type='text'>
+      </div>
+      <div id='user-search-result'></div>
+      </div>
+  .box-form__field.clearfix
+    .box-form__field--left
+      %label.box-form__label{for:  "chat_group_チャットメンバー"} チャットメンバー
+    .box-form__field--right
+      #box-users
+        - @group.users.each do |user|
+          .box-user.clearfix{id: "box-user-#{user.id}"}
+            %input{name: "group[user_ids][]", type: "hidden", value: "#{user.id}"}
+            %p.box-user__name
+              = user.name
+            %a.user-search-remove.box-user__btn.box-user__btn--remove{"data-user-id" => "${user.id}", "data-user-name" => "${user.name}"} 削除
+    
+      / グループ作成機能の追加時はここにcollection_check_boxesの記述を入れてください
+      = f.collection_check_boxes :user_ids, User.all, :id, :name
+      / この部分はインクリメンタルサーチ（ユーザー追加の非同期化のときに使用します
+      /
+        <div id='chat-group-users'>
+        <div class='chat-group-user clearfix' id='chat-group-user-22'>
+        <input name='chat_group[user_ids][]' type='hidden' value='22'>
+        <p class='chat-group-user__name'>seo_kyohei</p>
+        </div>
+        </div>
+  .box-form__field.clearfix
+    .box-form__field--left
+    .box-form__field--right
+      = f.submit class: "box-form__action-btn"
+      
