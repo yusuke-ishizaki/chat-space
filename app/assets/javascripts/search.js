@@ -49,6 +49,5 @@ $(function () {
       $(this).parent().remove();
     });
   });
-  
 })
   
