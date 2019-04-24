@@ -44,6 +44,7 @@ $(function () {
       var user_name = $(this).attr("data-user-name");
       var user_id = $(this).attr("data-user-id");
       appendMembers(user_name, user_id);
+      $(this).parent().remove();
     });
     $(document).on("click", '.user_search_remove', function () {
       $(this).parent().remove();

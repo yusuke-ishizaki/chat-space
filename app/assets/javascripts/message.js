@@ -2,7 +2,7 @@ $(function () {
   function buildHTML(message) {
     var img =(message.image.url)? img = `<img src = ${message.image.url} class: "lower-message_image">`:"";  
     var html =
-      `<div class="message">
+      `<div class="message" data-message-id="${message.id}">
         <div class="upper-message">
           <div class="upper-message__user-name">
             ${ message.name}
@@ -23,6 +23,7 @@ $(function () {
   function scroll_view() {
     $('.main__bottom') .animate({scrollTop: $('.main__bottom')[0].scrollHeight},'fasts')
   }  
+　
   $('#new_message').on('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
@@ -46,4 +47,32 @@ $(function () {
       alert('error');
     });
   })
-}) 
+
+  function autoUpdate() {
+    var data = $('.message').last().data('id')
+    var user_url = document.location.pathname;
+    if (user_url.match(/messages/)) {
+      $.ajax({
+          type: 'GET',
+          url: user_url,
+          dataType: 'json',
+          data: { data: data }
+      })
+      .done(function (json) {
+          var insertHTML = '';
+          if (json.messages.length !== 0) {
+              json.messages.forEach(function(message) {
+                  insertHTML += buildHTML(message);                     
+              });
+          }    
+          $('.messages').append(insertHTML);
+          form_reset();                     
+          scroll_view();
+      })
+      .fail(function () {
+          alert('自動更新失敗');
+      });
+    }
+  };
+  setInterval(autoUpdate, 2000);
+})
