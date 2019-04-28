@@ -60,14 +60,12 @@ $(function () {
         data: { id: message_id }
       })
       .done(function (json) {
-        // var insertHTML = '';
         if (json.length !== 0) {
           json.forEach(function(message) {
             var html= buildHTML(message);  
             $('.main__bottom').append(html);                 
           });
         }    
-        // console.log(insertHTML)
         scroll_view();
       })
       .fail(function () {
