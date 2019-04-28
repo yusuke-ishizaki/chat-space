@@ -2,7 +2,7 @@ $(function () {
   function buildHTML(message) {
     var img =(message.image.url)? img = `<img src = ${message.image.url} class: "lower-message_image">`:"";  
     var html =
-      `<div class="message" data-message-id="${message.id}">
+      `<div class="message"  data-id="${message.id}">
         <div class="upper-message">
           <div class="upper-message__user-name">
             ${ message.name}
@@ -20,6 +20,7 @@ $(function () {
       </div>`;
     return html;
   }
+
   function scroll_view() {
     $('.main__bottom') .animate({scrollTop: $('.main__bottom')[0].scrollHeight},'fasts')
   }  
@@ -48,31 +49,33 @@ $(function () {
     });
   })
 
-  function autoUpdate() {
-    var data = $('.message').last().data('id')
-    var user_url = document.location.pathname;
-    if (user_url.match(/messages/)) {
+  let interval = setInterval(function(){
+    var message_id = $('.message').last().data('id')
+    console.log(message_id)
+    if (location.href.match(/\/groups\/\d+\/messages/)) {
       $.ajax({
-          type: 'GET',
-          url: user_url,
-          dataType: 'json',
-          data: { data: data }
+        type: 'GET',
+        url: location.href,
+        dataType: 'json',
+        data: { id: message_id }
       })
       .done(function (json) {
-          var insertHTML = '';
-          if (json.messages.length !== 0) {
-              json.messages.forEach(function(message) {
-                  insertHTML += buildHTML(message);                     
-              });
-          }    
-          $('.messages').append(insertHTML);
-          form_reset();                     
-          scroll_view();
+        // var insertHTML = '';
+        if (json.length !== 0) {
+          json.forEach(function(message) {
+            var html= buildHTML(message);  
+            $('.main__bottom').append(html);                 
+          });
+        }    
+        // console.log(insertHTML)
+        scroll_view();
       })
       .fail(function () {
-          alert('自動更新失敗');
+        alert('自動更新失敗');
       });
+    }else{
+      clearInterval(interval);
     }
-  };
-  setInterval(autoUpdate, 2000);
-})
+  } , 5000);
+
+});
