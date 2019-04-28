@@ -2,7 +2,7 @@ $(function () {
   function buildHTML(message) {
     var img =(message.image.url)? img = `<img src = ${message.image.url} class: "lower-message_image">`:"";  
     var html =
-      `<div class="message">
+      `<div class="message"  data-id="${message.id}">
         <div class="upper-message">
           <div class="upper-message__user-name">
             ${ message.name}
@@ -20,9 +20,11 @@ $(function () {
       </div>`;
     return html;
   }
+
   function scroll_view() {
     $('.main__bottom') .animate({scrollTop: $('.main__bottom')[0].scrollHeight},'fasts')
   }  
+　
   $('#new_message').on('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
@@ -46,4 +48,31 @@ $(function () {
       alert('error');
     });
   })
-}) 
+
+  let interval = setInterval(function(){
+    var message_id = $('.message').last().data('id')
+    if (location.href.match(/\/groups\/\d+\/messages/)) {
+      $.ajax({
+        type: 'GET',
+        url: location.href,
+        dataType: 'json',
+        data: { id: message_id }
+      })
+      .done(function (json) {
+        if (json.length !== 0) {
+          json.forEach(function(message) {
+            var html= buildHTML(message);  
+            $('.main__bottom').append(html);                 
+          });
+        }    
+        scroll_view();
+      })
+      .fail(function () {
+        alert('自動更新失敗');
+      });
+    }else{
+      clearInterval(interval);
+    }
+  } , 5000);
+
+});
