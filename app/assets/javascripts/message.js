@@ -25,6 +25,7 @@ $(function () {
     $('.main__bottom') .animate({scrollTop: $('.main__bottom')[0].scrollHeight},'fasts')
   }  
 　
+  $(".form__submit").prop("disabled", false); 
   $('#new_message').on('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
@@ -41,7 +42,6 @@ $(function () {
       var html = buildHTML(data);
       $('.main__bottom').append(html);
       scroll_view()
-      $(".form__submit").prop("disabled", false); 
       $("form")[0].reset();
     })
     .fail(function () {
