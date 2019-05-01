@@ -25,11 +25,11 @@ $(function () {
     $('.main__bottom') .animate({scrollTop: $('.main__bottom')[0].scrollHeight},'fasts')
   }  
 　
-  $(".form__submit").prop("data-disable-with", false); 
   $('#new_message').on('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr("action");  
+    $(".form__submit").removeAttr('data-disable-with');
     $.ajax({
       url: url,
       type: "POST",
