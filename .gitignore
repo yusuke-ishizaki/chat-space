@@ -18,3 +18,4 @@
 public/uploads/*
 user-materials/
 /public/uploads/message/image
+config/secrets.yml

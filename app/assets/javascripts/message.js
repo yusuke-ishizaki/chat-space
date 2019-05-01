@@ -66,6 +66,7 @@ $(function () {
           });
         }    
         scroll_view();
+        $(".form__submit").prop("disabled", false); 
       })
       .fail(function () {
         alert('自動更新失敗');
