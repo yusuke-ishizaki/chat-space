@@ -11,7 +11,7 @@
           Member：
           %li.member-list__member 
             -@groups.each do |user|
-                = user.name
+              = user.name
       = link_to "Edit", edit_group_path(@group.id), class: "main-header__edit-btn "
                     
     .main__bottom

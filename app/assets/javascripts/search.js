@@ -14,12 +14,12 @@ $(function () {
       $.ajax({
         type: 'GET',
         url: '/users',
-        data: { keyword: input },
+        data: { name: input },
         dataType: 'json'
       })
       .done(function (users) {
         $('#user_search_result').empty();
-        if(users.length !== 0 && input.length !== 0 ) {
+        if(users.length !== 0 && input.length !== 0) {
           users.forEach(function (user) {
             appendUsers(user);
           })
