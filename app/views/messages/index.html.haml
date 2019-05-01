@@ -10,8 +10,7 @@
         %ul.member-list
           Member：
           %li.member-list__member 
-            -@groups.users.each do |user|
-              .each-member
+            -@groups.each do |user|
                 = user.name
       = link_to "Edit", edit_group_path(@group.id), class: "main-header__edit-btn "
                     
