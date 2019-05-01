@@ -25,7 +25,7 @@ $(function () {
     $('.main__bottom') .animate({scrollTop: $('.main__bottom')[0].scrollHeight},'fasts')
   }  
 　
-  $(".form__submit").prop("disabled", false); 
+  $(".form__submit").prop("data-disable-with", false); 
   $('#new_message').on('submit', function (e) {
     e.preventDefault();
     var formData = new FormData(this);
