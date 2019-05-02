@@ -107,6 +107,12 @@
     }
  }
 
+ .chat-group-user.clearfix{
+  border-bottom: 1px solid #ddd;
+  margin-top: 30px;
+  margin-bottom: 30px;
+ }
+
   &__action-btn {
     display: inline-block;
     padding: 12px 20px;

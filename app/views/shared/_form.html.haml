@@ -26,10 +26,11 @@
       #box-users
         - @group.users.each do |user|
           .chat-group-user.clearfix{id: "chat-group-user-#{user.id}"}
-            %input{name: "group[user_ids][]", type: "hidden", value: "#{user.id}"}
             %p.chat-group-user__name
               = user.name
               <a class='user_search_remove box-user__btn box-user__btn--remove js-remove-btn'>削除</a>
+              %input{name: "group[user_ids][]", type: "hidden", value: "#{user.id}"}
+
 
   #box_user_22.box_user.clearfix
     = f.hidden_field :user_ids, value: current_user.id, multiple: true
