@@ -9,6 +9,7 @@ $(function () {
       </div>`
     user_list.append(html); 
   }
+  $("form")[0].reset();
   $("#user-search-field").on("keyup", function () {
     var input = $("#user-search-field").val();
       $.ajax({
